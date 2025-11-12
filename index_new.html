@@ -176,10 +176,12 @@
     
     /* === 接入流程 (Flow) 區塊 (保持原始樣式) === */
     .flow{
-      display:flex; 
-      flex-wrap:wrap; 
-      gap:10px;
-      justify-content: flex-start; 
+		display:grid; /* 1. 改為 Grid 佈局 */
+		gap:10px;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		
+		/* 【核心修正】新增左右內邊距，使步驟圓框內縮 */
+		padding: 0 16px;
     }
     
     .step{
@@ -188,7 +190,14 @@
       padding:10px 14px; 
       border-radius:999px; 
       font-size:14px;
+	  
+	  /* 【核心修正】強制文字不換行 *
+	  white-space: nowrap;
+	  
+	  /* 3. 確保文字在等寬的步驟框中居中 */
+	  text-align: center;
     }
+	
     /* === 接入流程 (Flow) 區塊 結束 === */
 
     .packages{display:grid; gap:18px; grid-template-columns: grid-template-columns: 1fr;}
@@ -273,16 +282,25 @@
           display: grid; 
           grid-template-columns: 1fr 1fr; 
           gap: 10px; 
-          padding: 0 24px; 
+		  
+		  padding: 0 16px;
       }
       
       .step {
           text-align: center;
           display: block; 
           width: 100%;
+		/* 新增：將左右 padding 移到 .step 內部 */
+			padding: 14px 0; 
+			/* 讓它在 24px 處對齊 */
+			margin: 0 0;
       }
       /* === 接入流程 (Flow) 區塊 結束 === */
-      
+
+		#service-intro .glass p {
+			padding: 0 24px; 
+		}
+  
       /* .grid 容器 (產品優勢) */
       .grid {
           padding: 0 24px;
@@ -412,7 +430,7 @@
       <h2>服務介紹</h2>
       <div class="glass">
           <p>
-              布卡盾專為【台灣遊戲伺服器】市場設計，提供分散式防禦、隱藏 IP、全程加密保障資料安全，並透過精準流量識別降低誤封風險。<br>
+              布卡盾專為【台灣遊戲伺服器】市場設計，提供分散式防禦、隱藏 IP、全程加密保障資料安全，並透過精準流量識別降低誤封風險。<br><br>
               為【電腦與手機線上遊戲】量身設計，能抵禦各類網路攻擊，搭配台灣獨家線路節點快速切換，使用者幾乎無感，全面滿足高安全性需求。
           </p>
       </div>
@@ -584,27 +602,20 @@
     <footer>© 2025 布卡盾官方網站 | 安心雲防系統</footer>
   </main>
   
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
+<script>
+		document。addEventListener('DOMContentLoaded'， () => {
 			const menuToggle = document.querySelector('.menu-toggle');
-			const navLinks = document.getElementById('nav-links');
+			const navLinks = document。getElementById('nav-links');
 			
-			// 【重要】新增：檢查元素是否成功找到
-			if (!menuToggle) {
-				console.error("Hamburger Error: 找不到 .menu-toggle 按鈕 (漢堡按鈕)");
-				return;
-			}
-			if (!navLinks) {
-				console.error("Hamburger Error: 找不到 #nav-links 選單容器");
-				return;
-			}
+			// 確保元素存在
+			if (!menuToggle || !navLinks) return;
 			
 			// 點擊漢堡選單時切換 class
-			menuToggle.addEventListener('click', () => {
+			menuToggle。addEventListener('click'， () => {
 				const isOpen = navLinks.classList.toggle('open');
-				menuToggle.classList.toggle('open');
+				menuToggle。classList。toggle('open');
 				// 更新無障礙屬性
-				menuToggle.setAttribute('aria-expanded', isOpen);
+				menuToggle。setAttribute('aria-expanded'， isOpen);
 			});
 
 			// 點擊選單內的連結後，自動關閉選單
@@ -612,7 +623,7 @@
 				link.addEventListener('click', () => {
 					navLinks.classList.remove('open');
 					menuToggle.classList.remove('open');
-					menuToggle.setAttribute('aria-expanded', 'false');
+					menuToggle。setAttribute('aria-expanded', 'false');
 				});
 			});
 		});
