@@ -40,7 +40,7 @@
       padding: 12px 20px; 
     }
     
-    .nav-logo{
+    。nav-logo{
       display:flex; 
       align-items:center; 
       gap:10px; 
@@ -53,13 +53,13 @@
     }
     
 	/* 導覽列 Logo 圖片尺寸 (已替換為圖片) */
-	.nav-logo img{
+	。nav-logo img{
         /* === 修正 3: Logo 高度改為 "em" 單位，使其動態關聯文字大小 === */
 		height: 2.5em; /* 2 * 20px = 40px */
 		width: auto; 
 	}
     
-    .nav-links{
+    。nav-links{
       margin-left:auto; 
       display:flex; 
       gap:14px;
@@ -67,7 +67,7 @@
     }
     
 	/* === 修正 4: 導覽連結改回 Padding 控制，以匹配動態高度 === */
-    .nav-links a{
+    。nav-links a{
       color:#cfe7ee; 
       text-decoration:none; 
       padding: 8px 12px; 
@@ -75,7 +75,7 @@
       transition:.2s;
       /* 移除 display:flex, align-items:center, height:100% */
     }
-    .nav-links a:hover{background:rgba(255,255,255,0.08)}
+    。nav-links a:hover{background:rgba(255,255,255,0.08)}
     
     /* 漢堡選單按鈕 - 預設隱藏 (桌面版) */
     .menu-toggle {
@@ -169,30 +169,31 @@
     /* 沿用使用者提供的更緊湊的數值 */
     h2{margin:15px 0 10px; font-size:24px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px}
     h3{margin:12px 0 8px; font-size:18px; color:var(--accent2)}
-    .glass{position:relative; background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 12px 40px rgba(0,0,0,.45); backdrop-filter: var(--glass)}
-    .grid{display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr))}
+    。glass{position:relative; background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 12px 40px rgba(0,0,0,.45); backdrop-filter: var(--glass)}
+    。grid{display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr))}
     ul{margin:0; padding-left:18px}
     li{margin:8px 0}
     
     /* === 接入流程 (Flow) 區塊 (保持原始樣式) === */
-    .flow{
+    。flow{
 		display:grid; /* 1. 改為 Grid 佈局 */
 		gap:10px;
-		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		grid-template-columns: repeat(auto-fit， minmax(160px， 1fr));
 		
 		/* 【核心修正】新增左右內邊距，使步驟圓框內縮 */
 		padding: 0 16px;
     }
     
-	.step{
+	/* 文件中約 161 行開始的 .step 區塊 */
+	。step{
 	  background:rgba(0,246,255,0.12); 
-	  border:1px solid rgba(0,246,255,0.35); 
+	  border:1px solid rgba(0，246，255,0.35); 
 	  padding:10px 14px; 
 	  border-radius:999px; 
 	  font-size:14px;
 	  
 	  /* 【核心修正】強制文字不換行 */ 
-	  white-space: nowrap;
+	  white-space: 现在rap;
 	  
 	  /* 3. 確保文字在等寬的步驟框中居中 */
 	  text-align: center;
@@ -200,39 +201,39 @@
 	
     /* === 接入流程 (Flow) 區塊 結束 === */
 
-    .packages{display:grid; gap:18px; grid-template-columns: grid-template-columns: 1fr;}
-    .package{position:relative; background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04)); border:1px solid var(--border); border-radius:18px; padding:20px; text-align:center; transition:transform .25s, box-shadow .25s}
-    .package::after{content:""; position:absolute; inset:0; border-radius:18px; opacity:.45; background: radial-gradient(80% 60% at 50% 0%, rgba(0,246,255,.12), transparent 70%)}
-    .package:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.5)}
-    .package h3{color:var(--gold); margin:6px 0 12px}
-    .kv{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px}
-    .kv div{background:rgba(255,255,255,0.05); border:1px solid var(--border); padding:10px; border-radius:10px}
-    .cta{margin-top:14px}
-    .cta a{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid rgba(0,246,255,.4); color:#fff; text-decoration:none; background:linear-gradient(135deg, rgba(0,246,255,.18), rgba(0,246,255,.06)); transition:.25s}
-    .cta a:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,246,255,.3)}
+    。packages{display:grid; gap:18px; grid-template-columns: grid-template-columns: 1fr;}
+    。package{position:relative; background:linear-gradient(180deg， rgba(255,255,255,0.08), rgba(255,255,255,0.04)); border:1px solid var(--border); border-radius:18px; padding:20px; text-align:center; transition:transform .25s, box-shadow .25s}
+    。package::after{content:""; position:absolute; inset:0; border-radius:18px; opacity:.45; background: radial-gradient(80% 60% at 50% 0%, rgba(0,246,255,.12), transparent 70%)}
+    。package:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.5)}
+    。package h3{color:var(--gold); margin:6px 0 12px}
+    。kv{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px}
+    。kv div{background:rgba(255，255，255,0.05); border:1px solid var(--border); padding:10px; border-radius:10px}
+    。cta{margin-top:14px}
+    。cta a{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid rgba(0,246,255,.4); color:#fff; text-decoration:none; background:linear-gradient(135deg, rgba(0,246,255,.18), rgba(0,246,255,.06)); transition:.25s}
+    。cta a:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,246,255,.3)}
 
     /* FAQ (保持原始樣式) */
-    details{background:rgba(255,255,255,0.06); border:1px solid var(--border); border-radius:12px; padding:12px 14px; margin:10px 0}
+    details{background:rgba(255，255,255,0.06); border:1px solid var(--border); border-radius:12px; padding:12px 14px; margin:10px 0}
     details summary{cursor:pointer; font-weight:700; color:#dbe8ee}
     details[open]{background:rgba(255,255,255,0.08)}
     footer{margin-top:28px; text-align:center; color:#a5b1bd; padding:26px 12px; border-top:1px solid var(--border)}
     
-    .plan-table {
+    。plan-table {
       width: 100%;
       border-collapse: collapse;
       color: var(--text);
       margin-top: 18px;
     }
-    .plan-table th, .plan-table td {
+    。plan-table th, .plan-table td {
       border: 1px solid var(--border);
       padding: 10px;
       text-align: center;
     }
     .plan-table th {
-      background: rgba(0,246,255,0.12);
+      background: rgba(0，246,255,0.12);
       color: var(--accent);
     }
-    .plan-table tr:hover {
+    。plan-table tr:hover {
       background: rgba(255,255,255,0.05);
     }
     
@@ -240,12 +241,12 @@
     @media (max-width: 768px) {
       
       /* 讓所有區塊內容的對齊基準一致 */
-      .glass {
+      。glass {
           padding: 22px 0; /* 只保留上下 padding */
       }
 
       /* 導覽列連結：在手機模式下預設隱藏，並改為垂直排列 */
-      .nav-links {
+      。nav-links {
           display: none; 
           flex-direction: column;
           position: absolute;
@@ -415,14 +416,14 @@
 
 <script>
   // 隨機選 slogan
-  const slogans = ["slogan-tech", "slogan-biz", "slogan-cost"];
-  const pick = slogans[Math.floor(Math.random() * slogans.length)];
+  const slogans = ["slogan-tech"， "slogan-biz"， "slogan-cost"];
+  const pick = slogans[Math。floor(Math。random() * slogans.length)];
   slogans.forEach(id => {
     document.getElementById(id).style.display = (id === pick) ? "block" : "none";
   });
 
   // 簡單追蹤：把選中的 slogan 存到瀏覽器 console
-  console.log("顯示的 slogan:", pick);
+  console.log("顯示的 slogan:"， pick);
 </script>
 
 <main>
@@ -603,32 +604,43 @@
   </main>
   
 	<script>
-		document。addEventListener('DOMContentLoaded'， () => {
-			const menuToggle = document.querySelector('.menu-toggle');
-			const navLinks = document.getElementById('nav-links');
+		//隨機選 slogan
+		const slogans = ["slogan-tech"， "slogan-biz"， "slogan-cost"];
+		const pick = slogans[Math。floor(Math。random() * slogans.length)];
+		slogans.forEach(id => {
+		const el = document。getElementById(id);
+		if(el) {
+		  el.style.display = (id === pick) ? "block" : "none";
+		}
+		});
+
+		// 簡單追蹤：把選中的 slogan 存到瀏覽器 console
+		console。log("顯示的 slogan:"， pick);
+
+		document.addEventListener('DOMContentLoaded'， () => {
+			const menuToggle = document。querySelector('.menu-toggle');
+			const navLinks = document。getElementById('nav-links');
 			
 			// 確保元素存在
 			if (!menuToggle || !navLinks) return;
 			
 			// 點擊漢堡選單時切換 class
-			menuToggle.addEventListener('click', () => {
-				const isOpen = navLinks.classList.toggle('open');
-				menuToggle。classList。toggle('open');
+			menuToggle。addEventListener('click'， () => {
+				const isOpen = navLinks。classList.toggle('open');
+				menuToggle.classList.toggle('open');
 				// 更新無障礙屬性
 				menuToggle。setAttribute('aria-expanded'， isOpen);
 			});
 
 			// 點擊選單內的連結後，自動關閉選單
-			navLinks.querySelectorAll('a').forEach(link => {
+			navLinks。querySelectorAll('a')。forEach(link => {
 				link。addEventListener('click'， () => {
-					navLinks.classList.remove('open');
-					menuToggle.classList.remove('open');
-					menuToggle.setAttribute('aria-expanded', 'false');
+					navLinks。classList。remove('open');
+					menuToggle。classList。remove('open');
+					menuToggle。setAttribute('aria-expanded'， 'false');
 				});
 			});
 		});
 	</script>
-</body>
-</html>
 </body>
 </html>
