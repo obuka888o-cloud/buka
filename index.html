@@ -21,8 +21,9 @@
       background-attachment:fixed;
     }
     /* Nav 導覽列樣式 */
+    /* === 調整 1: 提高 NAV Z-index，確保導覽列在最頂層 === */
     .nav{
-      position:sticky; top:0; z-index:50; backdrop-filter: saturate(150%) blur(10px);
+      position:sticky; top:0; z-index:999; backdrop-filter: saturate(150%) blur(10px);
       background:var(--nav); border-bottom:1px solid var(--border);
     }
     
@@ -85,7 +86,8 @@
         font-size: 24px;
         cursor: pointer;
         padding: 0;
-        z-index: 51;
+        /* === 調整 2: 提高 MENU-TOGGLE Z-index，確保按鈕在最頂層 === */
+        z-index: 1000;
     }
     /* 漢堡選單圖標 */
     .hamburger {
@@ -117,7 +119,7 @@
 
 
     /* Header 首頁標題區樣式 */
-    /* === 調整 1: 縮小 HEADER 的上下 Padding，減少空隙 (96px 24px 56px -> 60px 24px 40px) === */
+    /* 沿用使用者提供的更緊湊的數值 */
     header{position:relative; padding:60px 24px 5px; text-align:center; overflow:hidden}
     .stars{position:absolute; inset:0; pointer-events:none}
     .stars span{
@@ -164,8 +166,8 @@
 
 
     main{max-width:1150px; margin:0 auto; padding:28px 24px 96px}
-    /* === 調整 2: 縮小 H2 的 Margin Top，減少區塊間距 (40px -> 30px) === */
-    h2{margin:25px 0 10px; font-size:24px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px}
+    /* 沿用使用者提供的更緊湊的數值 */
+    h2{margin:15px 0 10px; font-size:24px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px}
     h3{margin:12px 0 8px; font-size:18px; color:var(--accent2)}
     .glass{position:relative; background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 12px 40px rgba(0,0,0,.45); backdrop-filter: var(--glass)}
     .grid{display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr))}
@@ -441,10 +443,12 @@
         <h3><span class="icon">🛡️</span> 防禦功能</h3>
         <p>DDoS 防禦支援大流量攻擊；CC 防護精準阻擋，誤封率極低。</p>
       </div>
+      
       <div>
         <h3><span class="icon">⚡</span> 加速功能</h3>
         <p>智慧監測（透過 SDK 提供），依即時網路狀況自動選擇最佳路線。</p>
       </div>
+      
       <div>
         <h3><span class="icon">📊</span> 行為分析</h3>
         <p>記錄訪問行為，有效阻斷惡意掃描與暴力破解。</p>
@@ -594,10 +598,10 @@
         });
 
         // 點擊選單內的連結後，自動關閉選單
-        navLinks。querySelectorAll('a')。forEach(link => {
-            link。addEventListener('click'， () => {
-                navLinks。classList。remove('open');
-                menuToggle.classList.remove('open');
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuToggle。classList.remove('open');
                 menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
