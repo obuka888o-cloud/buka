@@ -22,14 +22,14 @@
     }
     /* Nav 導覽列樣式 */
     /* === 調整 1: 提高 NAV Z-index，確保導覽列在最頂層 === */
-    。nav{
+    .nav{
       position:sticky; top:0; z-index:999; backdrop-filter: saturate(150%) blur(10px);
       background:var(--nav); border-bottom:1px solid var(--border);
     }
     
 	
     /* Nav 內容容器 - 導覽列高度的最終控制點 */
-    。nav-inner{
+    .nav-inner{
       max-width:1150px; 
       margin:0 auto; 
       display:flex; 
@@ -184,19 +184,19 @@
 		padding: 0 16px;
     }
     
-    .step{
-      background:rgba(0,246,255,0.12); 
-      border:1px solid rgba(0,246,255,0.35); 
-      padding:10px 14px; 
-      border-radius:999px; 
-      font-size:14px;
+	.step{
+	  background:rgba(0,246,255,0.12); 
+	  border:1px solid rgba(0,246,255,0.35); 
+	  padding:10px 14px; 
+	  border-radius:999px; 
+	  font-size:14px;
 	  
-	  /* 【核心修正】強制文字不換行 */
+	  /* 【核心修正】強制文字不換行 */ 
 	  white-space: nowrap;
 	  
 	  /* 3. 確保文字在等寬的步驟框中居中 */
 	  text-align: center;
-    }
+	}
 	
     /* === 接入流程 (Flow) 區塊 結束 === */
 
@@ -602,16 +602,16 @@
     <footer>© 2025 布卡盾官方網站 | 安心雲防系統</footer>
   </main>
   
-<script>
+	<script>
 		document。addEventListener('DOMContentLoaded'， () => {
 			const menuToggle = document.querySelector('.menu-toggle');
-			const navLinks = document。getElementById('nav-links');
+			const navLinks = document.getElementById('nav-links');
 			
 			// 確保元素存在
 			if (!menuToggle || !navLinks) return;
 			
 			// 點擊漢堡選單時切換 class
-			menuToggle。addEventListener('click'， () => {
+			menuToggle.addEventListener('click', () => {
 				const isOpen = navLinks.classList.toggle('open');
 				menuToggle。classList。toggle('open');
 				// 更新無障礙屬性
@@ -620,14 +620,15 @@
 
 			// 點擊選單內的連結後，自動關閉選單
 			navLinks.querySelectorAll('a').forEach(link => {
-				link.addEventListener('click', () => {
+				link。addEventListener('click'， () => {
 					navLinks.classList.remove('open');
 					menuToggle.classList.remove('open');
-					menuToggle。setAttribute('aria-expanded', 'false');
+					menuToggle.setAttribute('aria-expanded', 'false');
 				});
 			});
 		});
 	</script>
 </body>
 </html>
-
+</body>
+</html>
