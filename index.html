@@ -27,7 +27,7 @@
     }
     
 	
-    /* Nav 內容容器 - 調整上下左右間距的關鍵 */
+    /* Nav 內容容器 - 導覽列高度的最終控制點 */
     .nav-inner{
       max-width:1150px; 
       margin:0 auto; 
@@ -35,31 +35,90 @@
       align-items:center; 
       justify-content: space-between; 
       gap:16px; 
-      /* 15px 是上下間距；20px 是左右間距 */
-      padding:15px 20px; 
+      /* === 修正 1: 移除固定高度，改回動態 Padding === */
+      padding: 12px 20px; 
     }
     
     .nav-logo{
       display:flex; 
       align-items:center; 
-      gap:10px; /* Logo 圖片與文字之間的間距 */
+      gap:10px; 
       color:#fff; 
       text-decoration:none; 
-      font-weight:800
+      font-weight:800;
+      /* === 修正 2: 設定 Logo 區域的基準字體大小 === */
+      font-size: 20px; 
+      /* height: 100%; (移除) */
     }
     
 	/* 導覽列 Logo 圖片尺寸 (已替換為圖片) */
 	.nav-logo img{
-		height: 45px; /* 設定固定高度來控制大小 */
-		width: auto; /* 讓寬度自動調整，以保持原始圖片比例（不會變形） */
+        /* === 修正 3: Logo 高度改為 "em" 單位，使其動態關聯文字大小 === */
+		height: 2.5em; /* 2 * 20px = 40px */
+		width: auto; 
 	}
     
-    .nav-links{margin-left:auto; display:flex; gap:14px}
-    .nav-links a{color:#cfe7ee; text-decoration:none; padding:8px 10px; border-radius:8px; transition:.2s}
+    .nav-links{
+      margin-left:auto; 
+      display:flex; 
+      gap:14px;
+      /* height: 100%; (移除) */
+    }
+    
+	/* === 修正 4: 導覽連結改回 Padding 控制，以匹配動態高度 === */
+    .nav-links a{
+      color:#cfe7ee; 
+      text-decoration:none; 
+      padding: 8px 12px; 
+      border-radius:8px; 
+      transition:.2s;
+      /* 移除 display:flex, align-items:center, height:100% */
+    }
     .nav-links a:hover{background:rgba(255,255,255,0.08)}
+    
+    /* 漢堡選單按鈕 - 預設隱藏 (桌面版) */
+    .menu-toggle {
+        display: none; 
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0;
+        z-index: 51;
+    }
+    /* 漢堡選單圖標 */
+    .hamburger {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        position: relative;
+        transition: .2s;
+    }
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: .2s;
+    }
+    .hamburger::before { top: -8px; }
+    .hamburger::after { top: 8px; }
+    
+    /* 漢堡選單關閉狀態 (X) 樣式 */
+    .menu-toggle.open .hamburger { background: transparent; }
+    .menu-toggle.open .hamburger::before { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.open .hamburger::after { transform: translateY(-8px) rotate(-45deg); }
+
 
     /* Header 首頁標題區樣式 */
-    header{position:relative; padding:96px 24px 56px; text-align:center; overflow:hidden}
+    /* === 調整 1: 縮小 HEADER 的上下 Padding，減少空隙 (96px 24px 56px -> 60px 24px 40px) === */
+    header{position:relative; padding:60px 24px 5px; text-align:center; overflow:hidden}
     .stars{position:absolute; inset:0; pointer-events:none}
     .stars span{
       position:absolute; width:2px; height:2px; background:rgba(255,255,255,0.8); border-radius:50%;
@@ -68,38 +127,27 @@
     }
     @keyframes twinkle { 0%,100%{opacity:.4; transform:scale(1)} 50%{opacity:1; transform:scale(1.6)} }
     
-    /* 新增：Logo 圖片置中容器 - 實現圖片水平置中 */
     .logo-container {
         display: flex; 
-        justify-content: center; /* 水平置中 */
-        margin: 0 auto 12px auto; /* 調整 Logo 下方與標題之間的距離 */
+        justify-content: center; 
+        margin: 0 auto 12px auto; 
     }
 
-    /* Logo 圖片本身 - 僅控制大小，排版會自動適應 */
 	#header-logo {
-        /* 主 Logo 圖片使用自適應單位 */
 		width: auto;
-		height: 50vw; /* 保持圖片比例 */
-		
-		/* 確保圖片在任何情況下都不會超出其父容器 */
+		height: 50vw; 
 		max-width: 100%;
-
-		/* 設定一個最大值，避免在大螢幕上 Logo 變得過大 */
 		max-height: 280px;
 		max-width: 280px;
 	}
     
-    /* 調整 品牌標題 的父容器 (現只包含標題文字) */
     .brand{
       display:inline-flex; 
       align-items:center; 
       gap:18px; 
-      position:relative; /* 移除非絕對定位基準屬性 */
-      margin-bottom: 24px; /* 調整標題下方與 Slogan 之間的距離 */
+      position:relative; 
+      margin-bottom: 24px; 
     } 
-    
-    /* 移除舊的 .shield 樣式 (已不需要) */
-    /* .shield{width:82px; height:82px; filter: drop-shadow(0 0 24px rgba(0,246,255,.35))} */
     
     .title{font-size:52px; font-weight:900; letter-spacing:.7px; color:var(--accent); position:relative}
     .badge{display:inline-block; margin-left:12px; padding:6px 16px; border-radius:999px; background:linear-gradient(135deg,#ffd700,#ffb300); color:#1a1a1a; font-weight:800; box-shadow:0 0 28px rgba(255,215,0,.55)}
@@ -112,37 +160,35 @@
     @keyframes beam { 0%{opacity:.4} 50%{opacity:.9} 100%{opacity:.4} }
     .sub{max-width:980px; margin:18px auto 0; color:var(--muted)}
     
-    /* Slogan 樣式 */
     .slogan { font-size:22px; font-weight:700; margin-top:18px; color:var(--gold); display:none; }
 
 
     main{max-width:1150px; margin:0 auto; padding:28px 24px 96px}
-    h2{margin:40px 0 16px; font-size:24px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px}
+    /* === 調整 2: 縮小 H2 的 Margin Top，減少區塊間距 (40px -> 30px) === */
+    h2{margin:25px 0 10px; font-size:24px; color:var(--accent); border-left:5px solid var(--accent); padding-left:10px}
     h3{margin:12px 0 8px; font-size:18px; color:var(--accent2)}
-    /* 預設 .glass 樣式 */
     .glass{position:relative; background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 12px 40px rgba(0,0,0,.45); backdrop-filter: var(--glass)}
     .grid{display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr))}
     ul{margin:0; padding-left:18px}
     li{margin:8px 0}
     
-    /* 預設 .flow 樣式 (大螢幕) */
-    .flow{display:flex; flex-wrap:wrap; gap:10px;}
-    
-    /* 預設 .step 樣式 (大螢幕) */
-    .step{background:rgba(0,246,255,0.12); border:1px solid rgba(0,246,255,0.35); padding:10px 14px; border-radius:999px; font-size:14px}
-
-    /* === 修正後的 .cta 樣式：使用 Flexbox 實現水平置中和換行 === */
-    .cta{
-      margin-top:14px;
-      display: flex;
-      flex-wrap: wrap; /* 允許按鈕在小螢幕上換行 */
-      gap: 12px; /* 按鈕之間的間距 */
-      justify-content: center; /* 讓所有按鈕群體在容器內居中 */
+    /* === 接入流程 (Flow) 區塊 (保持原始樣式) === */
+    .flow{
+      display:flex; 
+      flex-wrap:wrap; 
+      gap:10px;
+      justify-content: flex-start; 
     }
-    .cta a{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid rgba(0,246,255,.4); color:#fff; text-decoration:none; background:linear-gradient(135deg, rgba(0,246,255,.18), rgba(0,246,255,.06)); transition:.25s}
-    .cta a:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,246,255,.3)}
-    /* === .cta 修正結束 === */
     
+    .step{
+      background:rgba(0,246,255,0.12); 
+      border:1px solid rgba(0,246,255,0.35); 
+      padding:10px 14px; 
+      border-radius:999px; 
+      font-size:14px;
+    }
+    /* === 接入流程 (Flow) 區塊 結束 === */
+
     .packages{display:grid; gap:18px; grid-template-columns: grid-template-columns: 1fr;}
     .package{position:relative; background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04)); border:1px solid var(--border); border-radius:18px; padding:20px; text-align:center; transition:transform .25s, box-shadow .25s}
     .package::after{content:""; position:absolute; inset:0; border-radius:18px; opacity:.45; background: radial-gradient(80% 60% at 50% 0%, rgba(0,246,255,.12), transparent 70%)}
@@ -150,9 +196,11 @@
     .package h3{color:var(--gold); margin:6px 0 12px}
     .kv{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px}
     .kv div{background:rgba(255,255,255,0.05); border:1px solid var(--border); padding:10px; border-radius:10px}
-    
+    .cta{margin-top:14px}
+    .cta a{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid rgba(0,246,255,.4); color:#fff; text-decoration:none; background:linear-gradient(135deg, rgba(0,246,255,.18), rgba(0,246,255,.06)); transition:.25s}
+    .cta a:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,246,255,.3)}
 
-    /* FAQ */
+    /* FAQ (保持原始樣式) */
     details{background:rgba(255,255,255,0.06); border:1px solid var(--border); border-radius:12px; padding:12px 14px; margin:10px 0}
     details summary{cursor:pointer; font-weight:700; color:#dbe8ee}
     details[open]{background:rgba(255,255,255,0.08)}
@@ -177,37 +225,68 @@
       background: rgba(255,255,255,0.05);
     }
     
+    /* === 媒體查詢：手機模式樣式 (漢堡選單) === */
     @media (max-width: 768px) {
-      /* === 手機排版對齊修正 === */
       
-      /* 1. 調整 .glass 容器的邊距，以便內部內容能與 h2 對齊 */
+      /* 讓所有區塊內容的對齊基準一致 */
       .glass {
-          padding: 22px 0; /* 移除左右 padding */
+          padding: 22px 0; /* 只保留上下 padding */
       }
 
-      /* 2. 修正 .flow (接入流程) 達到兩欄置中效果 */
-      .flow {
-          display: flex; /* 確保使用 Flex 才能用 justify-content: center */
-          flex-wrap: wrap; 
-          gap: 10px; 
-          justify-content: center; /* 讓所有項目群體置中 (解決最後一行黏左邊的問題) */
-          padding: 0 24px; /* 新增左右 padding (匹配 main 和 h2 的邊緣) */
+      /* 導覽列連結：在手機模式下預設隱藏，並改為垂直排列 */
+      .nav-links {
+          display: none; 
+          flex-direction: column;
+          position: absolute;
+          top: 100%; /* 定位在導覽列下方 */
+          left: 0;
+          width: 100%;
+          background: var(--nav); 
+          border-top: 1px solid var(--border);
+          padding: 10px 0;
+          margin-left: 0;
+          gap: 0;
       }
       
-      /* 3. 設定 .step 元素的寬度，確保每行最多兩個 */
-      .step {
-          width: calc(50% - 5px); /* 50% 寬度 - 一半的 gap (10px/2) */
-          text-align: center;
-          display: block; /* 讓寬度計算生效 */
-          padding: 10px 14px; /* 維持原本的 padding */
+      /* 導覽列連結：選單開啟時顯示 */
+      .nav-links.open {
+          display: flex; 
       }
 
-      /* 4. 確保 .grid (產品優勢/使用場景) 也對齊 */
+      /* 導覽列連結項目樣式 */
+      .nav-links a {
+          padding: 12px 24px; /* 增加左右 padding */
+          width: 100%;
+          text-align: left;
+          border-radius: 0;
+      }
+      
+      /* 漢堡選單按鈕：在手機模式下顯示 */
+      .menu-toggle {
+          display: block; 
+      }
+      
+      /* === 接入流程 (Flow) 區塊 (保持原始手機樣式) === */
+      .flow {
+          display: grid; 
+          grid-template-columns: 1fr 1fr; 
+          gap: 10px; 
+          padding: 0 24px; 
+      }
+      
+      .step {
+          text-align: center;
+          display: block; 
+          width: 100%;
+      }
+      /* === 接入流程 (Flow) 區塊 結束 === */
+      
+      /* .grid 容器 (產品優勢) */
       .grid {
           padding: 0 24px;
       }
       
-      /* === 響應式表格 (plan-table) 樣式 === */
+      /* ... (保留其他現有手機樣式，例如 plan-table 相關) ... */
       .plan-table,
       .plan-table thead,
       .plan-table tbody,
@@ -217,9 +296,9 @@
         display: block;
         width: 100%;
       }
-    
+
       .plan-table thead { display: none; }
-    
+
       .plan-table tr {
         margin-bottom: 18px;
         border: 1px solid var(--border);
@@ -228,7 +307,7 @@
         padding: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       }
-    
+
       .plan-table td {
         display: grid;
         grid-template-columns: 120px 1fr;
@@ -240,7 +319,7 @@
         text-align: right;
       }
       .plan-table td:last-child { border-bottom: none; }
-    
+
       .plan-table td::before {
         content: attr(data-label);
         font-weight: 700;
@@ -248,7 +327,7 @@
         text-align: left;
         white-space: nowrap;
       }
-    
+
       .plan-table td:first-child {
         grid-template-columns: 1fr;
         text-align: center;
@@ -260,7 +339,7 @@
         font-weight: 800;
       }
       .plan-table td:first-child::before { content: ""; }
-    
+
       .plan-table tr:nth-child(4) td[colspan] {
         display: block;
         text-align: center;
@@ -270,8 +349,7 @@
         border-bottom: none;
         margin: 8px 0;
       }
-    }
-    
+    }    
 </style>
 </head>
 
@@ -281,7 +359,7 @@
       <a class="nav-logo" href="#">
 		<img src="logo.png" alt="布卡盾 Logo">
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="mobile-menu"> 
         <a href="#home">首頁</a>
         <a href="#scenes">使用場景</a>
         <a href="#features">產品優勢</a>
@@ -289,6 +367,9 @@
         <a href="#plans">產品套餐</a>
         <a href="#faq">FAQ</a>
       </div>
+      <button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="hamburger"></span>
+      </button>
     </div>
   </nav>
 
@@ -310,10 +391,6 @@
   <p class="slogan" id="slogan-biz">伺服器穩定營運，攻擊無所遁形</p>
   <p class="slogan" id="slogan-cost">降低維護成本，提升伺服器安全</p>
 
-  <p class="sub">
-    布卡盾專為【台灣遊戲伺服器】市場設計，提供分散式防禦、隱藏 IP、全程加密保障資料安全，並透過精準流量識別降低誤封風險。<br/>
-    為【電腦與手機線上遊戲】量身設計，能抵禦各類網路攻擊，搭配台灣獨家線路節點快速切換，使用者幾乎無感，全面滿足高安全性需求。
-  </p>
 </header>
 
 <script>
@@ -328,8 +405,17 @@
   console.log("顯示的 slogan:", pick);
 </script>
 
-
 <main>
+    <section id="service-intro">
+      <h2>服務介紹</h2>
+      <div class="glass">
+          <p>
+              布卡盾專為【台灣遊戲伺服器】市場設計，提供分散式防禦、隱藏 IP、全程加密保障資料安全，並透過精準流量識別降低誤封風險。<br>
+              為【電腦與手機線上遊戲】量身設計，能抵禦各類網路攻擊，搭配台灣獨家線路節點快速切換，使用者幾乎無感，全面滿足高安全性需求。
+          </p>
+      </div>
+    </section>
+
     <section id="scenes">
       <h2>使用場景</h2>
       <div class="glass grid">
@@ -473,7 +559,7 @@
 </section>
 
 
-    <section id="faq">
+<section id="faq">
       <h2>常見問題</h2>
       <div class="glass">
         <details>
@@ -493,6 +579,29 @@
 
     <footer>© 2025 布卡盾官方網站 | 安心雲防系統</footer>
   </main>
+  
+  <script>
+    document。addEventListener('DOMContentLoaded'， () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('mobile-menu');
+
+        // 點擊漢堡選單時切換 class
+        menuToggle。addEventListener('click'， () => {
+            const isOpen = navLinks。classList。toggle('open');
+            menuToggle。classList。toggle('open');
+            // 更新無障礙屬性
+            menuToggle。setAttribute('aria-expanded'， isOpen);
+        });
+
+        // 點擊選單內的連結後，自動關閉選單
+        navLinks。querySelectorAll('a')。forEach(link => {
+            link。addEventListener('click'， () => {
+                navLinks。classList。remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    });
+  </script>
 </body>
 </html>
-
