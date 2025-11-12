@@ -22,14 +22,14 @@
     }
     /* Nav 導覽列樣式 */
     /* === 調整 1: 提高 NAV Z-index，確保導覽列在最頂層 === */
-    .nav{
+    。nav{
       position:sticky; top:0; z-index:999; backdrop-filter: saturate(150%) blur(10px);
       background:var(--nav); border-bottom:1px solid var(--border);
     }
     
 	
     /* Nav 內容容器 - 導覽列高度的最終控制點 */
-    .nav-inner{
+    。nav-inner{
       max-width:1150px; 
       margin:0 auto; 
       display:flex; 
@@ -605,7 +605,7 @@
   
 	<script>
 		//隨機選 slogan
-		const slogans = ["slogan-tech"， "slogan-biz"， "slogan-cost"];
+		const slogans = ["slogan-tech","slogan-biz","slogan-cost"];
 		const pick = slogans[Math。floor(Math。random() * slogans.length)];
 		slogans.forEach(id => {
 		const el = document。getElementById(id);
@@ -644,3 +644,4 @@
 	</script>
 </body>
 </html>
+
