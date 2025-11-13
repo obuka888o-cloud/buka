@@ -22,14 +22,14 @@
     }
     /* Nav 導覽列樣式 */
     /* === 調整 1: 提高 NAV Z-index，確保導覽列在最頂層 === */
-    .nav{
+    。nav{
       position:sticky; top:0; z-index:999; backdrop-filter: saturate(150%) blur(10px);
       background:var(--nav); border-bottom:1px solid var(--border);
     }
     
 	
     /* Nav 內容容器 - 導覽列高度的最終控制點 */
-    .nav-inner{
+    。nav-inner{
       max-width:1150px; 
       margin:0 auto; 
       display:flex; 
@@ -510,7 +510,7 @@
       <thead>
         <tr>
           <th>方案</th>
-          <th>適用伺服器規模</th>
+          <th>最大連線數模</th>
           <th>DDoS 防護</th>
           <th>頻寬等級</th>
           <th>加速</th>
@@ -521,8 +521,8 @@
       <tbody>
         <tr>
           <td data-label="方案">基礎版</td>
-          <td data-label="適用伺服器規模">適合中小型伺服器</td>
-          <td data-label="DDoS 防護">標準</td>
+          <td data-label="最大連線數模">400</td>
+          <td data-label="DDoS 防護">無限</td>
           <td data-label="頻寬等級">標準</td>
           <td data-label="加速">台灣專線 / 國際節點加速</td>
           <td data-label="免費測試">7天</td>
@@ -530,8 +530,8 @@
         </tr>
         <tr>
           <td data-label="方案">高級版</td>
-          <td data-label="適用伺服器規模">適合成長型伺服器</td>
-          <td data-label="DDoS 防護">進階</td>
+          <td data-label="最大連線數">800</td>
+          <td data-label="DDoS 防護">無限</td>
           <td data-label="頻寬等級">進階</td>
           <td data-label="加速">台灣專線 / 國際節點加速</td>
           <td data-label="免費測試">7天</td>
@@ -539,8 +539,8 @@
         </tr>
         <tr>
           <td data-label="方案">商務版</td>
-          <td data-label="適用伺服器規模">適合大型伺服器</td>
-          <td data-label="DDoS 防護">企業級</td>
+          <td data-label="最大連線數">1200</td>
+          <td data-label="DDoS 防護">無限</td>
           <td data-label="頻寬等級">企業級</td>
           <td data-label="加速">台灣專線 / 國際節點加速</td>
           <td data-label="免費測試">7天</td>
@@ -552,9 +552,9 @@
         </tr>
         <tr>
           <td data-label="方案">頻寬等級擴充</td>
-          <td data-label="適用伺服器規模">-</td>
+          <td data-label="最大連線數">-</td>
           <td data-label="DDoS 防護">-</td>
-          <td data-label="頻寬等級">彈性擴充</td>
+          <td data-label="頻寬等級">1Mbps</td>
           <td data-label="加速">台灣專線 / 國際節點加速</td>
           <td data-label="免費測試">1個月</td>
           <td data-label="價格">NT$320</td>
@@ -631,4 +631,5 @@
 		});
 	</script>
 </body>
+
 </html>
